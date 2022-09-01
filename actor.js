@@ -244,21 +244,21 @@ function formatActor() {
     <div style="display:flex;flex-direction:row;">
     <div style="flex:1 1 50%"><h2>Traits</h2>
     <div style="text-align:left;flex:50%;padding-left: 20px;">
-    ${randomItem(trouble_table)}<br>
-    ${randomItem(personality_table)}<br>
-    ${randomItem(appearance_table)}<br>
-    ${randomItem(background_table)}<br>
-    ${randomItem(motivation_table)}<br>
+    ● ${randomItem(trouble_table)}<br>
+    ● ${randomItem(personality_table)}<br>
+    ● ${randomItem(appearance_table)}<br>
+    ● ${randomItem(background_table)}<br>
+    ● ${randomItem(motivation_table)}<br>
     </div></div>
     <div style="flex:50%"><h2>Assets</h2>
     <div style="text-align:left;padding-left: 20px;">
-    ${randomItem(asset1)}<br>
-    ${randomItem(asset2)}<br>
-    ${randomItem(asset3)}<br>
-    ${randomItem(asset4)}<br>
-    _____________________<br>
-    _____________________<br>
-    _____________________<br>
+    ○ ${randomItem(asset1)}<br>
+    ○ ${randomItem(asset2)}<br>
+    ○ ${randomItem(asset3)}<br>
+    ○ ${randomItem(asset4)}<br>
+    ○ _____________________<br>
+    ○ _____________________<br>
+    ○ _____________________<br>
     </div></div></div>
     <div style="min-height:50px;"></div>`;
 }
