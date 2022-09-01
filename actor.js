@@ -1,7 +1,16 @@
 const stats_table = [
     ['d8', 'd6', 'd6'],
     ['d6', 'd8', 'd6'],
-    ['d6', 'd6', 'd8']
+    ['d6', 'd6', 'd8'],
+    ['d10', 'd4', 'd6'],
+    ['d10', 'd6', 'd4'],
+    ['d6', 'd10', 'd4'],
+    ['d4', 'd10', 'd6'],
+    ['d6', 'd4', 'd10'],
+    ['d4', 'd6', 'd10'],
+    ['d12', 'd4', 'd4'],
+    ['d4', 'd12', 'd4'],
+    ['d4', 'd4', 'd12']
 ]
 const personality_table = [
     'Ambitious',
@@ -118,6 +127,98 @@ const appearance_table = [
     'Unremarkable' 
 ]
 
+const asset1 = [
+    'Auto-Aiming Longbow',
+    'Bunch of Acid Vials',
+    'Blame Thrower',
+    'EMP Baton',
+    'Pneumatic Exo-Arm',
+    'Flying Cape',
+    'Gravity Hammer',
+    'Devolution Blowgun',
+    'Invisible Shield',
+    'Mask of Disguise',
+    'Sentient Bastard Sword',
+    'Canned Heat',
+    'Plasma Launcher',
+    'Psychic Blundrebuss',
+    'Rocket Boots',
+    'Unregistered Slugthrower',
+    'Vintage Space Helm',
+    'X-Ray Monocle',
+    'Phaser Sabre',
+    'Meat Cannon',   
+]
+
+const asset2 = [
+    '50ft of Self-Tying Rope',
+    'Spontaneous Meat Generator',
+    'Book of Illusions',
+    'Cold Iron Manacles',
+    'Detachable Gills',
+    'Fake Identification',
+    'Sack of Trail Rations',
+    'Local Isle Map',
+    'Pheromone Emitter',
+    'Mobile Forge',
+    'Healing Salve',
+    'Telekinetic Glove',
+    'Retractable 20ft Pole',
+    'Saddled Sauropod',
+    'Scroll of Imperceptibility',
+    'Set of Locksmith’s Tools',
+    'Spell of Lightning Bolt',
+    'Vial of Truth Serum',
+    'Ward of Protection',
+    'Unlocked Datapad',
+]
+
+const asset3 = [
+    'Plasma Torch',
+    'Radiation Calendar',
+    'Attache of Forged Documents',
+    'Psychic ID Card',
+    'Half-Track Motorcycle',
+    'Mole Rat Companion',
+    'Screw-On Replacement Head',
+    'Hired Coachmen',
+    'Hired Guard',
+    'Hired Torchbearer',
+    'Trunk of Costumes',
+    'Auto-Inflatable Airship',
+    '3D Paint Brush',
+    'Cerebral Stack Implant',
+    'Large Riding Bird',
+    'Pet Nanosaurus',
+    'Indentured Laborer',
+    'Bottle of Pain Suppressants',
+    'Ancient Star Charts',
+    'Textbook on Pseudophysics'
+]
+
+const asset4 = [
+    'Bag of Replenishing Meat',
+    'Cloth of Dematerialization',
+    'Detachable Mouth',
+    'Elastic Limbs',
+    'Expandable Belly Button',
+    'Flying Tea Saucer',
+    'Glyph of Anti-Friction',
+    'Gullibility Goop',
+    'Inefficient Duplicator',
+    'Magic Magnet',
+    'Material Transmuter',
+    'Permeable Pitons',
+    'Reality Virtualizers',
+    'Remote-Seeing Eyeball',
+    'Sentient Gauntlet',
+    'Spell of Mind Melding',
+    'Stone of Fog',
+    'Teleportation Incantation',
+    'Turbo Inhaler',
+    'Universal Translator'    
+]
+
 function randomIndex(list){
     return Math.floor(Math.random() * (list.length))
 }
@@ -130,21 +231,38 @@ function formatActor() {
     var stats = randomItem(stats_table)
     var i = Math.floor(Math.random() * (personality_table.length));
     return `
-    <table>
-    <tr>
-    <td><h2>Attributes</h2><br>${stats}</td>
-    </tr>
-    <tr>
-    <td><h2>Traits</h2><br>
-    ${trouble_table[i]}<br>
-    ${personality_table[i]}<br>
-    ${appearance_table[i]}<br>
-    ${background_table[i]}<br>
-    ${motivation_table[i]}<br>
-    </td>
-    </tr>
-    </table>`;
+    <div style="flex: 1 1 100%;">
+    <h2>Attributes</h2>
+    </div>
+    <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
+    </div>
+    <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
+    <div style="flex: 1 1 33%"><h3>Physical</h3><img src=images/${stats[0]}.jpg width="100" height="100"><br>${stats[0]}</div>
+    <div style="flex: 1 1 33%"><h3>Mental</h3><img src=images/${stats[1]}.jpg width="100" height="100"><br>${stats[1]}</div>
+    <div style="flex: 1 1 33%"><h3>Social</h3><img src=images/${stats[2]}.jpg width="100" height="100"><br>${stats[2]}</div>
+    </div>
+    <div style="display:flex;flex-direction:row;">
+    <div style="flex:1 1 50%"><h2>Traits</h2>
+    <div style="text-align:left;flex:50%;padding-left: 20px;">
+    ${randomItem(trouble_table)}<br>
+    ${randomItem(personality_table)}<br>
+    ${randomItem(appearance_table)}<br>
+    ${randomItem(background_table)}<br>
+    ${randomItem(motivation_table)}<br>
+    </div></div>
+    <div style="flex:50%"><h2>Assets</h2>
+    <div style="text-align:left;padding-left: 20px;">
+    ${randomItem(asset1)}<br>
+    ${randomItem(asset2)}<br>
+    ${randomItem(asset3)}<br>
+    ${randomItem(asset4)}<br>
+    _____________________<br>
+    _____________________<br>
+    _____________________<br>
+    </div></div></div>
+    <div style="min-height:50px;"></div>`;
 }
+
 
 function newActor() {
     var elem = document.getElementById('actorDisplay');
