@@ -232,7 +232,7 @@ function formatActor() {
     var i = Math.floor(Math.random() * (personality_table.length));
     return `
     <div style="flex: 1 1 100%;">
-    <h2>Attributes</h2>
+    <h2 style="font-size:1.5em">Attributes</h2>
     </div>
     <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
     </div>
@@ -256,9 +256,9 @@ function formatActor() {
     &#9675; ${randomItem(asset2)}<br>
     &#9675; ${randomItem(asset3)}<br>
     &#9675; ${randomItem(asset4)}<br>
-    &#9675; _____________________<br>
-    &#9675; _____________________<br>
-    &#9675; _____________________<br>
+    &#9675; __________________<br>
+    &#9675; __________________<br>
+    &#9675; __________________<br>
     </div></div></div>
     <div style="min-height:50px;"></div>`;
 }
