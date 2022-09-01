@@ -231,7 +231,7 @@ function formatActor() {
     var stats = randomItem(stats_table)
     var i = Math.floor(Math.random() * (personality_table.length));
     return `
-    <div style="flex: 1 1 100%;">
+    <div style="display:flex;flex-direction:column;flex: 1 1 100%;">
     <h2 style="font-size:1.5em">Attributes</h2>
     </div>
     <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
