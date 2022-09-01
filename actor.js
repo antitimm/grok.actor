@@ -237,28 +237,28 @@ function formatActor() {
     <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
     </div>
     <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
-    <div style="flex: 1 1 33%"><h3>Physical</h3><img src=images/${stats[0]}.jpg width="100" height="100"><br>${stats[0]}</div>
-    <div style="flex: 1 1 33%"><h3>Mental</h3><img src=images/${stats[1]}.jpg width="100" height="100"><br>${stats[1]}</div>
-    <div style="flex: 1 1 33%"><h3>Social</h3><img src=images/${stats[2]}.jpg width="100" height="100"><br>${stats[2]}</div>
+    <div style="flex: 1 1 33%"><h3>Physical</h3><img src=images/${stats[0]}.jpg width="120" height="120"><br>${stats[0]}</div>
+    <div style="flex: 1 1 33%"><h3>Mental</h3><img src=images/${stats[1]}.jpg width="120" height="120"><br>${stats[1]}</div>
+    <div style="flex: 1 1 33%"><h3>Social</h3><img src=images/${stats[2]}.jpg width="120" height="120"><br>${stats[2]}</div>
     </div>
     <div style="display:flex;flex-direction:row;">
     <div style="flex:1 1 50%"><h2>Traits</h2>
     <div style="text-align:left;flex:50%;padding-left: 20px;">
-    ● ${randomItem(trouble_table)}<br>
-    ● ${randomItem(personality_table)}<br>
-    ● ${randomItem(appearance_table)}<br>
-    ● ${randomItem(background_table)}<br>
-    ● ${randomItem(motivation_table)}<br>
+    &#9679; ${randomItem(trouble_table)}<br>
+    &#9679; ${randomItem(personality_table)}<br>
+    &#9679; ${randomItem(appearance_table)}<br>
+    &#9679; ${randomItem(background_table)}<br>
+    &#9679; ${randomItem(motivation_table)}<br>
     </div></div>
     <div style="flex:50%"><h2>Assets</h2>
     <div style="text-align:left;padding-left: 20px;">
-    ○ ${randomItem(asset1)}<br>
-    ○ ${randomItem(asset2)}<br>
-    ○ ${randomItem(asset3)}<br>
-    ○ ${randomItem(asset4)}<br>
-    ○ _____________________<br>
-    ○ _____________________<br>
-    ○ _____________________<br>
+    &#9675; ${randomItem(asset1)}<br>
+    &#9675; ${randomItem(asset2)}<br>
+    &#9675; ${randomItem(asset3)}<br>
+    &#9675; ${randomItem(asset4)}<br>
+    &#9675; _____________________<br>
+    &#9675; _____________________<br>
+    &#9675; _____________________<br>
     </div></div></div>
     <div style="min-height:50px;"></div>`;
 }
