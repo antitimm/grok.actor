@@ -166,7 +166,7 @@ const asset2 = [
     'Retractable 20ft Pole',
     'Saddled Sauropod',
     'Scroll of Imperceptibility',
-    'Set of Locksmith’s Tools',
+    'Set of Locksmith\'s Tools',
     'Spell of Lightning Bolt',
     'Vial of Truth Serum',
     'Ward of Protection',
