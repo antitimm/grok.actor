@@ -1,3 +1,6 @@
+const attribute_names = ["Physical", "Mental", "Social"]
+const starting_assets = 7
+
 const stats_table = [
     ['d8', 'd6', 'd6'],
     ['d6', 'd8', 'd6'],
@@ -227,44 +230,69 @@ function randomItem(list){
     return list[randomIndex(list)]
 }
 
-function formatActor() {
-    var stats = randomItem(stats_table)
-    var i = Math.floor(Math.random() * (personality_table.length));
+class Actor {
+    constructor(){
+        this.stats = randomItem(stats_table)
+        this.traits = [randomItem(trouble_table),
+                       randomItem(personality_table),
+                       randomItem(appearance_table),
+                       randomItem(background_table),
+                       randomItem(motivation_table),
+                      ]
+        this.assets = [randomItem(asset1),
+                       randomItem(asset2),
+                       randomItem(asset3),
+                       randomItem(asset4),
+                      ]
+    }
+} 
+
+function formatStats(stats) {
+    let formattedStats = [`<div style="display:flex;flex-direction:column;flex: 1 1 100%;">
+                           <h2 style="font-size:1.5em">Attributes</h2>
+                           </div>
+                           <div style="flex: 1 1 100%;display:flex;flex-direction:row;">`]
+    for (let i = 0; i < attribute_names.length; i++) {
+        formattedStats.push(`<div style="flex: 1 1 33%"><h3>${attribute_names[i]}</h3><img src=images/${stats[i]}.jpg width="120" height="120"><br>${stats[i]}</div>`)
+    }
+    formattedStats.push(`</div>`)
+    return formattedStats.join("")
+}
+
+function formatList(prepend, items, append, title) {
+    let formattedList = [`<div style="flex:50%"><h2>${title}</h2>
+                          <div style="text-align:left;padding-left: 20px;">`]
+    for(const i in items) {
+        formattedList.push(`${prepend} ${items[i]} ${append}`)
+    }
+    formattedList.push(`</div></div>`)
+    return formattedList.join("")
+}
+
+function formatTraits(traits){
+    return formatList("&#9679;", traits, "<br>", "Traits")
+}
+
+function formatAssets(assets){
+    paddedAssets = assets
+    while(paddedAssets.length < starting_assets){
+        paddedAssets.push("__________________")
+    }
+    return formatList("&#9675;", assets, "<br>", "Assets")
+}
+
+function formatActor(actor) {
     return `
-    <div style="display:flex;flex-direction:column;flex: 1 1 100%;">
-    <h2 style="font-size:1.5em">Attributes</h2>
-    </div>
-    <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
-    </div>
-    <div style="flex: 1 1 100%;display:flex;flex-direction:row;">
-    <div style="flex: 1 1 33%"><h3>Physical</h3><img src=images/${stats[0]}.jpg width="120" height="120"><br>${stats[0]}</div>
-    <div style="flex: 1 1 33%"><h3>Mental</h3><img src=images/${stats[1]}.jpg width="120" height="120"><br>${stats[1]}</div>
-    <div style="flex: 1 1 33%"><h3>Social</h3><img src=images/${stats[2]}.jpg width="120" height="120"><br>${stats[2]}</div>
-    </div>
+    ${formatStats(actor.stats)}
     <div style="display:flex;flex-direction:row;">
-    <div style="flex:1 1 50%"><h2>Traits</h2>
-    <div style="text-align:left;flex:50%;padding-left: 20px;">
-    &#9679; ${randomItem(trouble_table)}<br>
-    &#9679; ${randomItem(personality_table)}<br>
-    &#9679; ${randomItem(appearance_table)}<br>
-    &#9679; ${randomItem(background_table)}<br>
-    &#9679; ${randomItem(motivation_table)}<br>
-    </div></div>
-    <div style="flex:50%"><h2>Assets</h2>
-    <div style="text-align:left;padding-left: 20px;">
-    &#9675; ${randomItem(asset1)}<br>
-    &#9675; ${randomItem(asset2)}<br>
-    &#9675; ${randomItem(asset3)}<br>
-    &#9675; ${randomItem(asset4)}<br>
-    &#9675; __________________<br>
-    &#9675; __________________<br>
-    &#9675; __________________<br>
-    </div></div></div>
+    ${formatTraits(actor.traits)}
+    ${formatAssets(actor.assets)}
+    </div>
     <div style="min-height:50px;"></div>`;
 }
 
-
 function newActor() {
     var elem = document.getElementById('actorDisplay');
-    elem.innerHTML = formatActor();
+    const actor = new Actor();
+    elem.innerHTML = formatActor(actor);
 }
